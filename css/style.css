@@ -87,19 +87,19 @@ body {
     background-color: #242424;
 }
 
-.navigation .logo-inner {
+.navigation .logo {
     float: left;
     width: 111px;
     height: 20px;
     padding-top: 22px;
 }
 
-.navigation .logo-inner img {
+.navigation .logo img {
     width: 111px;
     height: 24px;
 }
 
-.navigation .logo-inner:hover {
+.navigation .logo:hover {
     background: none;
 }
 
@@ -484,7 +484,7 @@ body {
     height: 561px;
     margin-top: -280px;
     margin-left: -390px;
-    background: #e9e5dc url("../img/map.png");
+    background: #e9e5dc;
     border: 7px solid white;
     box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
     z-index: 20;
@@ -659,6 +659,99 @@ body {
 .login-checkbox input[type="checkbox"]:checked+.checkbox-indicator::after {
     transform: rotate(-45deg);
 }
+
+/* Всплывающее окно Feedback start */
+.modal-feedback {
+    position: fixed;
+    display: none;
+    top: 10%;
+    left: 50%;
+    width: 300px;
+    margin-left: -230px;
+    padding: 50px 80px;
+    color: #000;
+    background: #f8f3f0 url("../img/pattern-white.jpg");
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
+    z-index: 25;
+}
+
+.modal-feedback-show {
+    display: block;
+    animation: bounceIn 0.6s;
+}
+
+.modal-feedback-close {
+    position: absolute;
+    top: 0;
+    right: -34px;
+    width: 22px;
+    height: 22px;
+    font-size: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.modal-feedback-close::before,
+.modal-feedback-close::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 2px;
+    width: 19px;
+    height: 3px;
+    background-color: #d0d0d0;
+    border-radius: 1px;
+}
+
+.modal-feedback-close::before {
+    transform: rotate(45deg);
+}
+
+.modal-feedback-close::after {
+    transform: rotate(-45deg);
+}
+
+.feedback-form {
+
+}
+
+.feedback-form input[type="text"],
+.feedback-form input[type="email"] {
+    width: 241px;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    font-family: "PT Sans Narrow", "Arial", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000;
+    text-transform: uppercase;
+    background-color: #f9f6f3;
+    border: 2px solid #000;
+}
+
+.feedback-form input:focus {
+    border-color: #663d15;
+}
+
+.feedback-form textarea {
+    max-width: 241px;
+    min-width: 241px;
+    min-height: 50px;
+    max-height: 150px;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    font-family: "PT Sans Narrow", "Arial", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000;
+    text-transform: uppercase;
+    background-color: #f9f6f3;
+    border: 2px solid #000;
+}
+/* Всплывающее окно Feedback end */
+
 /* Всплывающие окна end */
 
 
@@ -808,8 +901,16 @@ body {
 }
 
 .gallery-content img {
+    opacity: 0;
+    position: absolute;
     width: 286px;
     height: 164px;
+    transition: opacity 0.7s;
+}
+
+.gallery-content .active {
+    opacity: 1;
+    transition: opacity 0.5s;
 }
 
 .gallery .btn {
@@ -851,6 +952,82 @@ body {
 .appointment-form .btn {
     clear: both;
     width: 100%;
+}
+
+
+/* свойства для news */
+.news-block {
+    float: left;
+    width: 600px;
+}
+
+.new {
+    padding: 10px 10px 20px 10px;
+    margin-bottom: 50px;
+    color: black;
+    text-align: center;
+    background-color: white;
+    box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.4);
+}
+
+.new-photo {
+    width: 100%;
+    height: auto;
+}
+
+.new h2 {
+    margin: 20px;
+}
+
+.new time {
+    color: grey;
+}
+
+.new a {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 20px;
+    line-height: 28px;
+    text-transform: uppercase;
+    color: black;
+    border: 3px solid black;
+}
+
+.new a:hover {
+    color: white;
+    background-color: black;
+}
+
+.new p {
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: justify;
+    text-transform: none;
+}
+
+.news-nav {
+    float: right;
+    width: 250px;
+}
+
+.news-categories {
+    margin-bottom: 40px;
+}
+
+.news-nav h3 {
+    margin: 0 0 20px 0;
+}
+
+.news-nav a {
+    display: block;
+    padding: 10px;
+    color: black;
+}
+
+.news-nav a:hover {
+    color: grey;
 }
 
 
@@ -1132,11 +1309,11 @@ body {
     background: #663d15;
 }
 
-.catalog-nav {
+.paginator {
     margin-top: 45px;
 }
 
-.catalog-nav a {
+.paginator a {
     display: inline-block;
     width: 43px;
     padding: 9px 0 9px 0;
@@ -1144,14 +1321,19 @@ body {
     background: #000;
 }
 
-.catalog-nav a:hover {
+.paginator a:hover {
     background: #663d15;
 }
 
-.catalog-nav .active,
-.catalog-nav .active:hover {
+.paginator .active,
+.paginator .active:hover {
     color: #000;
     background: white;
+}
+
+/* свойства для contacts */
+.inner-content .index-content-title {
+    margin-top: 0;
 }
 
 @keyframes bounce {
