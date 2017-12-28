@@ -452,7 +452,7 @@ body {
 
 
 /* Всплывающие окна start */
-.modal-content {
+.modal-login {
     position: absolute;
     display: none;
     top: 120px;
@@ -466,7 +466,7 @@ body {
     z-index: 25;
 }
 
-.modal-content-show {
+.modal-login-show {
     display: block;
     animation: bounce 0.6s;
 }
@@ -475,7 +475,7 @@ body {
     animation: shake 0.6s;
 }
 
-.modal-content-map {
+.modal-map {
     position: fixed;
     display: none;
     top: 50%;
@@ -490,7 +490,7 @@ body {
     z-index: 20;
 }
 
-.modal-content-map-show {
+.modal-map-show {
     display: block;
     animation: bounceIn 0.6s;
 }
@@ -678,42 +678,6 @@ body {
 .modal-feedback-show {
     display: block;
     animation: bounceIn 0.6s;
-}
-
-.modal-feedback-close {
-    position: absolute;
-    top: 0;
-    right: -34px;
-    width: 22px;
-    height: 22px;
-    font-size: 0;
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-}
-
-.modal-feedback-close::before,
-.modal-feedback-close::after {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 2px;
-    width: 19px;
-    height: 3px;
-    background-color: #d0d0d0;
-    border-radius: 1px;
-}
-
-.modal-feedback-close::before {
-    transform: rotate(45deg);
-}
-
-.modal-feedback-close::after {
-    transform: rotate(-45deg);
-}
-
-.feedback-form {
-
 }
 
 .feedback-form input[type="text"],
@@ -918,6 +882,7 @@ body {
     bottom: 0;
     width: 140px;
     margin: 0;
+    outline: none;
 }
 
 .gallery-prev {
@@ -1224,8 +1189,16 @@ body {
     border: 2px solid #afadab;
 }
 
+.catalog-filter-select input[type="checkbox"]:disabled ~ .checkbox-name {
+    color: #afadab;
+}
+
 .catalog-filter-select input[type="radio"]:disabled+.radio-indicator {
     border: 2px solid #afadab;
+}
+
+.catalog-filter-select input[type="radio"]:disabled ~ .radio-name {
+    color: #afadab;
 }
 
 .catalog-items {

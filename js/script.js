@@ -1,20 +1,20 @@
 // работа с модальными окнами start
 
 // модальное окно login
-if (document.querySelector(".modal-content") != null) {
+if (document.querySelector(".modal-login") != null) {
   var loginBtn = document.querySelector(".login");
-  var loginPopup = document.querySelector(".modal-content");
+  var loginPopup = document.querySelector(".modal-login");
   var modalOverlay = document.querySelector(".modal-overlay");
   var login = loginPopup.querySelector("[name=login]");
   var form = loginPopup.querySelector("form");
   var password = loginPopup.querySelector("[name=password]");
-  var closeLogin = document.querySelector(".modal-content .modal-content-close");
+  var closeLogin = document.querySelector(".modal-login .modal-content-close");
 
   // появление окна login при клике по кнопке Вход, фокусировка на поле Логин
   loginBtn.addEventListener("click", function(event){
     event.preventDefault();
     modalOverlay.classList.add("modal-overlay-show");
-    loginPopup.classList.add("modal-content-show");
+    loginPopup.classList.add("modal-login-show");
     login.focus();
   });
 
@@ -30,7 +30,7 @@ if (document.querySelector(".modal-content") != null) {
   closeLogin.addEventListener("click", function(event) {
     event.preventDefault();
     modalOverlay.classList.remove("modal-overlay-show");
-    loginPopup.classList.remove("modal-content-show");
+    loginPopup.classList.remove("modal-login-show");
     loginPopup.classList.remove("modal-error");
   });
 }
@@ -40,7 +40,7 @@ if (document.querySelector(".modal-content") != null) {
 if (document.querySelector(".modal-feedback") != null) {
   var feedbackBtn = document.querySelector(".feedback-btn");
   var feedbackModal = document.querySelector(".modal-feedback");
-  var closeFeedback = document.querySelector(".modal-feedback-close");
+  var closeFeedback = document.querySelector(".modal-feedback .modal-content-close");
 
   // появление окна feedback при клике на кнопке Обратная связь на главной
   feedbackBtn.addEventListener("click", function(event){
@@ -59,66 +59,69 @@ if (document.querySelector(".modal-feedback") != null) {
 
 
 // модальное окно map
-if (document.querySelector(".modal-content-map") != null) {
+if (document.querySelector(".modal-map") != null) {
   var mapBtn = document.querySelector(".js-btn-map");
   var mapBtnFooter = document.querySelector(".footer .js-btn-map");
-  var mapPopup = document.querySelector(".modal-content-map");
-  var closeMap = document.querySelector(".modal-content-map .modal-content-close");
+  var mapPopup = document.querySelector(".modal-map");
+  var closeMap = document.querySelector(".modal-map .modal-content-close");
 
   // появление окна map при клике по кнопке Как проехать
   mapBtn.addEventListener("click", function(event) {
     event.preventDefault();
     modalOverlay.classList.add("modal-overlay-show");
-    mapPopup.classList.add("modal-content-map-show");
+    mapPopup.classList.add("modal-map-show");
   });
 
   // появление окна map при клике по кнопке Как нас найти в футере
   mapBtnFooter.addEventListener("click", function(event) {
     event.preventDefault();
     modalOverlay.classList.add("modal-overlay-show");
-    mapPopup.classList.add("modal-content-map-show");
+    mapPopup.classList.add("modal-map-show");
   });
 
   // скрытие окна map, при клике по кнопке Закрыть модального окна
   closeMap.addEventListener("click", function(event) {
     event.preventDefault();
     modalOverlay.classList.remove("modal-overlay-show");
-    mapPopup.classList.remove("modal-content-map-show");
+    mapPopup.classList.remove("modal-map-show");
   });
 }
 
 
 // скрытие всех модальных окон при клике вне модального окна
-modalOverlay.addEventListener("click", function(event) {
-  if (document.querySelector(".modal-content") != null) {
-    modalOverlay.classList.remove("modal-overlay-show");
-    loginPopup.classList.remove("modal-content-show");
-    loginPopup.classList.remove("modal-error");
-  }
-
-  if(document.querySelector(".modal-feedback") != null) {
-    if (feedbackModal.classList.contains("modal-feedback-show")) {
+if (document.querySelector(".modal-overlay") != null) {
+  modalOverlay.addEventListener("click", function(event) {
+    if (document.querySelector(".modal-login") != null) {
       modalOverlay.classList.remove("modal-overlay-show");
-      feedbackModal.classList.remove("modal-feedback-show");
+      loginPopup.classList.remove("modal-login-show");
+      loginPopup.classList.remove("modal-error");
     }
-  }
 
-  if(document.querySelector(".modal-content-map") != null) {
-    mapPopup.classList.remove("modal-content-map-show");
-  }
-});
+    if(document.querySelector(".modal-feedback") != null) {
+      if (feedbackModal.classList.contains("modal-feedback-show")) {
+        modalOverlay.classList.remove("modal-overlay-show");
+        feedbackModal.classList.remove("modal-feedback-show");
+      }
+    }
+
+    if(document.querySelector(".modal-map") != null) {
+      mapPopup.classList.remove("modal-map-show");
+    }
+  });
+}
+
 
 // скрытие всех модальных окон при нажатии клавиши ESC
 window.addEventListener("keydown", function(event) {
   if (event.keyCode === 27) {
-    if (loginPopup.classList.contains("modal-content-show")) {
+    if (loginPopup.classList.contains("modal-login-show")) {
       modalOverlay.classList.remove("modal-overlay-show");
-      loginPopup.classList.remove("modal-content-show");
+      loginPopup.classList.remove("modal-login-show");
       loginPopup.classList.remove("modal-error");
     }
-    if (mapPopup.classList.contains("modal-content-map-show")) {
+    if (mapPopup.classList.contains("modal-map-show")) {
       modalOverlay.classList.remove("modal-overlay-show");
-      mapPopup.classList.remove("modal-content-map-show");
+      mapPopup.classList.remove("modal-map-show");
     }
     if(document.querySelector(".modal-feedback") != null) {
       if (feedbackModal.classList.contains("modal-feedback-show")) {
