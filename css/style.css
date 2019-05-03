@@ -81,6 +81,7 @@ body {
 .navigation a {
     display: block;
     padding: 25px 20px;
+    transition: .2s;
 }
 
 .navigation a:hover {
@@ -90,8 +91,8 @@ body {
 .navigation .logo {
     float: left;
     width: 111px;
-    height: 20px;
-    padding-top: 22px;
+    height: 24px;
+    padding-top: 21px;
 }
 
 .navigation .logo img {
@@ -134,6 +135,7 @@ body {
     padding: 25px 20px 25px 50px;
     font-size: 16px;
     line-height: 20px;
+    transition: .2s;
 }
 
 .login:hover {
@@ -143,7 +145,7 @@ body {
 .login::before {
     content: "";
     position: absolute;
-    top: 28px;
+    top: 26px;
     left: 20px;
     width: 18px;
     height: 18px;
@@ -833,6 +835,7 @@ body {
     background-color: #000;
     border: none;
     cursor: pointer;
+    transition: .2s;
 }
 
 .btn:hover,
@@ -958,6 +961,7 @@ body {
     text-transform: uppercase;
     color: black;
     border: 3px solid black;
+    transition: .2s;
 }
 
 .new a:hover {
@@ -1125,6 +1129,7 @@ body {
     font-size: 14px;
     line-height: 18px;
     cursor: pointer;
+    transition: .2s;
 }
 
 .catalog-filter-select:hover {
@@ -1219,6 +1224,7 @@ body {
     line-height: 18px;
     background: white;
     box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2);
+    transition: .2s;
 }
 
 .catalog-item-card:hover {
@@ -1244,6 +1250,7 @@ body {
     color: #000;
     text-transform: none;
     background: none;
+    transition: .2s;
 }
 
 .catalog-item-card a.name:hover {
@@ -1276,6 +1283,7 @@ body {
     padding: 12px 0;
     text-align: center;
     background: #000;
+    transition: .2s;
 }
 
 .catalog-item-card a:hover {
@@ -1292,6 +1300,7 @@ body {
     padding: 9px 0 9px 0;
     text-align: center;
     background: #000;
+    transition: .2s;
 }
 
 .paginator a:hover {
